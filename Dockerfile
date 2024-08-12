@@ -4,8 +4,9 @@ WORKDIR /app
 
 RUN rm -rf node_modules package-lock.json
 
-# Copy package.json, package-lock.json, and tsconfig.json
-COPY ./package*.json ./tsconfig.json /app/
+# Copy package.json and tsconfig.json
+COPY ./package*.json ./
+COPY ./tsconfig.json ./
 
 # Installing dependencies
 RUN npm install
@@ -14,7 +15,7 @@ RUN npm install
 RUN npm install -g pm2
 
 # Copying all the files in our project
-COPY . /app
+COPY . .
 
 # Building the project
 RUN npm run build
