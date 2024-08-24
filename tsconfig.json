@@ -3,11 +3,9 @@
     "target": "ES2023",
     "module": "commonjs",
     "moduleResolution": "node",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "*"
-      ]
+      "@/*": ["./src/*"]
     },
     "types": ["node"],
     "allowJs": true,

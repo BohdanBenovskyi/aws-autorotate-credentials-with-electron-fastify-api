@@ -1,4 +1,3 @@
-import 'module-alias/register';
 import { build } from '@/app';
 
 const app = build({logger: true});
