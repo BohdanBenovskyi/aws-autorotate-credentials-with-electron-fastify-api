@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "tsc:watch": "",
     "build": "tsc && tsc-alias",
     "build:watch": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",
     "start": "node build/server.js",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@types/node": "^22.2.0",
     "concurrently": "^8.2.2",
+    "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.10",
     "typescript": "^5.5.4"
   }
