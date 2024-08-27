@@ -1,0 +1,11 @@
+services:
+  fastify:
+    container_name: aws-autorotate-credentials-with-electron-fastify-api
+    image: aws-autorotate-credentials-with-electron-fastify-api
+    build:
+      context: .
+      target: debug
+      dockerfile: ./Dockerfile
+    ports:
+      - 12098:12098
+      - 9229:9229
