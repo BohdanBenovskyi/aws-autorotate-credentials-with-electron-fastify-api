@@ -5,8 +5,8 @@ services:
     working_dir: /app
     build:
       context: .
-      target: prod
-      dockerfile: ./Dockerfile_prod
+      target: debug
+      dockerfile: ./Dockerfile_local
     ports:
       - 12098:12098
       - 9229:9229

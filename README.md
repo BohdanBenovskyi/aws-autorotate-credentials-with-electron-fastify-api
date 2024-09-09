@@ -9,6 +9,21 @@
     docker run -p 12098:12098 aws-autorotate-credentials-with-electron-fastify-api
 ```
 
+- Run targeted build
+Example of command
+```sh
+    docker compose -f docker-compose.<target>.yml up fastify --build
+```
+Where `target` can be:
+- local
+
+For prod target please run regular `Build & Run` command
+
+- Build & Run
+```sh
+    docker compose up fastify --build 
+```
+
 ## Local Launch Commands (trough docker compose)
 - Build
 ```sh
