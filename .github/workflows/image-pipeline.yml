@@ -35,7 +35,7 @@ jobs:
           docker compose build fastify
           docker tag aws-autorotate-credentials-with-electron-fastify-api:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_ENV
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"  
           
       - name: Deploy to App Runner
         id: deploy-apprunner
@@ -49,7 +49,7 @@ jobs:
           cpu : 1
           memory : 2
           port: 12098
-          wait-for-service-stability-seconds: 60
+          wait-for-service-stability: true
       
       - name: App Runner output
         run: echo "App runner output ${{ steps.deploy-apprunner.outputs.service-id }}" 
