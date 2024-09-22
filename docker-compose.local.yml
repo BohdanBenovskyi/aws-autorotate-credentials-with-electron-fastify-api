@@ -3,6 +3,7 @@ services:
     container_name: aws-autorotate-credentials-with-electron-fastify-api
     image: aws-autorotate-credentials-with-electron-fastify-api
     working_dir: /app
+    platform: linux/amd64
     build:
       context: .
       target: debug
