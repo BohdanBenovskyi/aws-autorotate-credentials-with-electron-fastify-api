@@ -6,6 +6,6 @@ describe('ping route', () => {
         });
 
         expect(response.statusCode).toEqual(200);
-        expect(response.body).toEqual('pong +1');
+        expect(response.body).toEqual('pong +2');
     });
 });
