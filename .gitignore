@@ -139,7 +139,7 @@ dist
 
 # lock files
 bun.lockb
-package-lock.json
+# package-lock.json
 pnpm-lock.yaml
 yarn.lock
 
