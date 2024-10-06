@@ -12,6 +12,7 @@
     "checkJs": true,
     "sourceMap": true,
     "outDir": "./build",
+    "rootDir": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -24,8 +25,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
-  "include": ["./src", "./tests", "**/*.ts", "src/**/*.ts" ],
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
   "exclude": ["node_modules", "build"]
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc --build tsconfig.json && tsc-alias",
     "build:watch": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\"",
-    "start": "node --inspect=0.0.0.0:9229 ./build/server.js",
+    "start": "node --inspect=0.0.0.0:9229 ./build/src/server.js",
     "build:start": "npm run build && npm run start",
     "build:start:pm2": "npm run build && pm2-runtime ecosystem.config.js",
     "test": "jest",

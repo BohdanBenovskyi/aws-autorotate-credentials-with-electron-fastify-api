@@ -61,6 +61,8 @@ export default [
         ignores: [
             "*.config.mjs",
             "*.config.js",
+            "*.config.ts",
+            "./tests/setup-jest.ts",
             ...includeIgnoreFile(gitignorePath).ignores
         ],
     },

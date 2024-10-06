@@ -2,7 +2,7 @@ module.exports = {
     apps: [
         {
             name: 'server',
-            script: "./build/server.js",
+            script: "./build/src/server.js",
             instances: process.env.NODE_ENV === 'development' ? 1 : 'max',
             exec_mode: process.env.NODE_ENV === 'development' ? 'fork' : 'cluster',
             wait_ready: true,
