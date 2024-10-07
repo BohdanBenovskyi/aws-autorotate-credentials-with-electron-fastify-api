@@ -1,18 +1,8 @@
-import { JestConfigWithTsJest, pathsToModuleNameMapper } from 'ts-jest';
-
-const tsConfigMock = {
-  compilerOptions: {
-    paths: {
-      '@/*': ['./src/*'],
-    },
-  },
-};
-
-const moduleNameMapper = pathsToModuleNameMapper(tsConfigMock.compilerOptions.paths, { prefix: '<rootDir>/' });
+import { JestConfigWithTsJest } from 'ts-jest';
 
 const jestConfig: JestConfigWithTsJest = {
-  moduleNameMapper,
   preset: 'ts-jest',
+  moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
   setupFilesAfterEnv: ['<rootDir>/tests/setup-jest.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleDirectories: ['node_modules', 'src'],
