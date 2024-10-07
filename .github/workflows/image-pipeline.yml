@@ -1,29 +1,29 @@
 name: Deploy to App Runner - Image based
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch: # Allow manual invocation of the workflow
-jobs:  
+jobs:
   deploy:
     runs-on: ubuntu-latest
-    
-    steps:      
+
+    steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           persist-credentials: false
-          
+
       - name: Configure AWS credentials
         id: aws-credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}     
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2        
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
@@ -35,21 +35,21 @@ jobs:
           docker compose build fastify
           docker tag aws-autorotate-credentials-with-electron-fastify-api:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"  
-          
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
       - name: Deploy to App Runner
         id: deploy-apprunner
-        uses: awslabs/amazon-app-runner-deploy@main        
+        uses: awslabs/amazon-app-runner-deploy@main
         with:
           service: app-runner-image-deploy-service
-          image: ${{ steps.build-image.outputs.image }}          
+          image: ${{ steps.build-image.outputs.image }}
           access-role-arn: ${{ secrets.ROLE_ARN }}
-          runtime: NODEJS_20.11.1        
+          runtime: NODEJS_20.11.1
           region: ${{ secrets.AWS_REGION }}
-          cpu : 1
-          memory : 2
+          cpu: 1
+          memory: 2
           port: 12098
           wait-for-service-stability: true
-      
+
       - name: App Runner output
-        run: echo "App runner output ${{ steps.deploy-apprunner.outputs.service-id }}" 
+        run: echo "App runner output ${{ steps.deploy-apprunner.outputs.service-id }}"

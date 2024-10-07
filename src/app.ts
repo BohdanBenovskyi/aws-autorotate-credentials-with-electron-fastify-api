@@ -5,9 +5,9 @@ import { config } from 'dotenv';
 config();
 
 export const build = (opts = {}): FastifyInstance => {
-    const app = fastify(opts);
+  const app = fastify(opts);
 
-    app.register(pingRequest, { prefix: '/v1' });
+  app.register(pingRequest, { prefix: '/v1' });
 
-    return app;
-}
+  return app;
+};

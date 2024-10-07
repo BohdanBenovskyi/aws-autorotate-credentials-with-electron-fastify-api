@@ -1,18 +1,18 @@
-import { JestConfigWithTsJest, pathsToModuleNameMapper } from "ts-jest";
+import { JestConfigWithTsJest, pathsToModuleNameMapper } from 'ts-jest';
 
 const tsConfigMock = {
   compilerOptions: {
     paths: {
-      "@/*": ["./src/*"]
+      '@/*': ['./src/*'],
     },
-  }
-}
+  },
+};
 
-const moduleNameMapper = pathsToModuleNameMapper(tsConfigMock.compilerOptions.paths, { prefix: '<rootDir>/' } );
+const moduleNameMapper = pathsToModuleNameMapper(tsConfigMock.compilerOptions.paths, { prefix: '<rootDir>/' });
 
 const jestConfig: JestConfigWithTsJest = {
   moduleNameMapper,
-  preset: "ts-jest",
+  preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/tests/setup-jest.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleDirectories: ['node_modules', 'src'],
@@ -20,16 +20,10 @@ const jestConfig: JestConfigWithTsJest = {
   coverageDirectory: 'coverage',
   collectCoverage: true,
   coverageReporters: ['lcov', 'json-summary'],
-  collectCoverageFrom: [
-    'src/**/*.{ts,tsx,js,jsx}',
-    '!src/**/*.d.ts',
-    '!src/**/*.types.ts',
-    '!src/**/*onfig.ts',
-  ],
+  collectCoverageFrom: ['src/**/*.{ts,tsx,js,jsx}', '!src/**/*.d.ts', '!src/**/*.types.ts', '!src/**/*onfig.ts'],
   transform: {
-    "^.+.tsx?$": ["ts-jest", { tsconfig: './tsconfig.json' }],
+    '^.+.tsx?$': ['ts-jest', { tsconfig: './tsconfig.json' }],
   },
 };
 
 export default jestConfig;
-
