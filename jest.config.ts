@@ -3,7 +3,7 @@ import { JestConfigWithTsJest } from 'ts-jest';
 const jestConfig: JestConfigWithTsJest = {
   preset: 'ts-jest',
   moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
-  setupFilesAfterEnv: ['<rootDir>/tests/setup-jest.ts'],
+  setupFilesAfterEnv: ['<rootDir>/test/setup-jest.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleDirectories: ['node_modules', 'src'],
   testRegex: '(/test/.*|(\\.|/)(test|spec))\\.(ts|js)x?$',
@@ -14,6 +14,7 @@ const jestConfig: JestConfigWithTsJest = {
   transform: {
     '^.+.tsx?$': ['ts-jest', { tsconfig: './tsconfig.json' }],
   },
+  testPathIgnorePatterns: ['/build/', '/node_modules/', '<rootDir>/test/setup-jest.ts'],
 };
 
 export default jestConfig;
